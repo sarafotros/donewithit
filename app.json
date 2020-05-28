@@ -23,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "A Marketplace for selling the stuff you don't need anymore."
   }
 }
