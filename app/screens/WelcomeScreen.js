@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
 
-// const image = { uri: './assets/images/' };
+import ButtonComponent from '../components/ButtonComponent'
 
 export default function WelcomeScreen(props) {
     return (
