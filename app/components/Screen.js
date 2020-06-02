@@ -12,5 +12,6 @@ export default Screen
 const styles = StyleSheet.create({
     screen: {
         paddingTop: Constance.statusBarHeight,
+        flex: 1,
     }
 });
