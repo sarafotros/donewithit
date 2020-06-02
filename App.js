@@ -6,12 +6,12 @@ import AppButton from './app/components/AppButton';
 import CardComponent from './app/components/CardComponent';
 import moduleName from './app/components/AppText'
 import ListingDetailsScreens from './app/screens/ListingDetailsScreens'
-import ViewImageScreen from './app/screens/ViewImageScreen'
+import MessagesScreen from './app/screens/MessagesScreen';
 
 
 export default function App() {
 
-  return <ViewImageScreen />;
+  return <MessagesScreen />;
 }
 
 
