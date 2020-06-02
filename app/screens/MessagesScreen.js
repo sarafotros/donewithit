@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }from 'react';
 import {
 	StyleSheet,
 	SafeAreaView,
@@ -9,12 +9,11 @@ import {
 } from 'react-native';
 
 import ListItem from '../components/ListItem';
-import ListItemSeparator from '../components/ListItemSeparator'
-import Screen from '../components/Screen'
+import ListItemSeparator from '../components/ListItemSeparator';
+import Screen from '../components/Screen';
+import ListItemDeleteAction from '../components/ListItemDeleteAction';
 
-
-
-const messages = [
+const initialMessages = [
 	{
 		id: 1,
 		title: 'T1',
@@ -30,6 +29,13 @@ const messages = [
 ];
 
 const MessagesScreen = (props) => {
+
+	const [messages, setMessages] = useState(initialMessages)
+
+	const handleDelete = (message) => {
+		//delete message from messages array
+		 setMessages(messages.filter((m) => m.id !== message.id))
+	}
 	return (
 		<Screen>
 			<FlatList
@@ -40,20 +46,23 @@ const MessagesScreen = (props) => {
 						title={item.title}
 						subTitle={item.description}
 						image={item.image}
-						onPress={()=> console.log('Message Selected',item)}
+						onPress={() => console.log('Message Selected', item)}
+						renderRightActions={() => (
+							<ListItemDeleteAction onPress={() => handleDelete(item)} />
+						)}
 					/>
 				)}
 				ItemSeparatorComponent={ListItemSeparator}
 			/>
 		</Screen>
 	);
-}
+};
 
-export default MessagesScreen
+export default MessagesScreen;
 
 const styles = StyleSheet.create({
 	// screen: {
-		// paddingTop: Platform.OS === 'android'? StatusBar.currentHeight : 0,
+	// paddingTop: Platform.OS === 'android'? StatusBar.currentHeight : 0,
 	// 	paddingTop: Constance.statusBarHeight,
 	// },
 });
