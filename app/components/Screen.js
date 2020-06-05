@@ -4,7 +4,11 @@ import Constance from 'expo-constants';
 
 
 const Screen = ({ children, style }) => {
-	return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
+    return <SafeAreaView style={[styles.screen, style]}>
+        <View style={style}>
+        {children}
+        </View>
+    </SafeAreaView>;
 };
 
 export default Screen
