@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Image, View, TouchableHighlight } from 'react-native';
 import AppText from './AppText'
 import colors from '../config/colors';
+// import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 const ListItem = ({
