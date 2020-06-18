@@ -1,35 +1,35 @@
 import React, { useEffect } from 'react';
 import {
-	StyleSheet,
-	TouchableWithoutFeedback,
 	View,
+	StyleSheet,
 	Image,
+	TouchableWithoutFeedback,
 	Alert,
 } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 import colors from '../config/colors';
 
-export default function ImageInput({ imageUri, onChangeImage }) {
+function ImageInput({ imageUri, onChangeImage }) {
 	useEffect(() => {
 		requestPermission();
 	}, []);
 
 	const requestPermission = async () => {
-		// const result  = await Permission.askAsync(Permission.CAMERA_ROLL, Permission.LOCATION)
 		const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-		if (!granted) alert('You need to enable permission to access the library');
+		if (!granted) alert('You need to enable permission to access the library.');
 	};
 
 	const handlePress = () => {
 		if (!imageUri) selectImage();
 		else
-			Alert.alert('Delete', 'Are you sure?', [
+			Alert.alert('Delete', 'Are you sure you want to delete this image?', [
 				{ text: 'Yes', onPress: () => onChangeImage(null) },
 				{ text: 'No' },
 			]);
 	};
+
 	const selectImage = async () => {
 		try {
 			const result = await ImagePicker.launchImageLibraryAsync({
@@ -38,7 +38,7 @@ export default function ImageInput({ imageUri, onChangeImage }) {
 			});
 			if (!result.cancelled) onChangeImage(result.uri);
 		} catch (error) {
-			console.log('Error reading an image');
+			console.log('Error reading an image', error);
 		}
 	};
 
@@ -63,13 +63,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: colors.light,
 		borderRadius: 15,
-		justifyContent: 'center',
 		height: 100,
+		justifyContent: 'center',
+		marginVertical: 10,
 		overflow: 'hidden',
 		width: 100,
 	},
 	image: {
-		width: '100%',
 		height: '100%',
+		width: '100%',
 	},
 });
+
+export default ImageInput;
