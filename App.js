@@ -6,6 +6,7 @@ import ListingEditScreen from './app/screens/ListingEditScreen';
 import AccountScreen from './app/screens/AccountScreen';
 import Screen from './app/components/Screen';
 import { Button, Image } from 'react-native';
+import ImageInput from './app/components/ImageInput';
 
 export default function App() {
 	const [imageUri, setImageUri] = useState();
@@ -32,8 +33,10 @@ export default function App() {
 
 	return (
 		<Screen>
-			<Button title="Select Image" onPress={selectImage} />
-			<Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+			<ImageInput
+				imageUri={imageUri}
+				onChangeImage={(uri) => selectImage(uri)}
+			/>
 		</Screen>
 	);
 }
